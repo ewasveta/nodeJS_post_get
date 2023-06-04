@@ -55,15 +55,14 @@ http.createServer(function (req, res) {
       }else if(req.method === "POST"){
         // POST /cars
         const fs = require('fs');
-
-        let current = require('./cars.json');
-        let car = 
+        
+        let theCar = 
         {
           brand: "Test"
         }
-        current.push(car)
-        
-        fs.writeFileSync('cars.json', JSON.stringify(current))
+        cars.push(theCar)
+
+        fs.writeFileSync('cars.json', JSON.stringify(cars))
 
       }
       
