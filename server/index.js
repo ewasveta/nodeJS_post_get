@@ -53,8 +53,7 @@ http.createServer(function (req, res) {
         res.end();
 
       }else if(req.method === "POST"){
-        // POST /cars
-        const fs = require('fs');
+        // POST /cars        
         
         let theCar = 
         {
