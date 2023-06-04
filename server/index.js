@@ -53,15 +53,20 @@ http.createServer(function (req, res) {
         res.end();
 
       }else if(req.method === "POST"){
-        // POST /cars        
-        
-        let theCar = 
+        // POST /cars   
+        let body = '';
+        req.on('data', chunk=>
         {
-          brand: "Test"
-        }
-        cars.push(theCar)
+          body += chunk.toString()
+        }) 
+        req.on('end', ()=>
+        {
+          const car = parse(body)
+          cars.push(car)
+          res.writeHead(200, {'Content-Type': 'application/json'});
+          res.end(JSON.toString(cars));
+        })       
 
-        fs.writeFileSync('cars.json', JSON.stringify(cars))
 
       }
       
